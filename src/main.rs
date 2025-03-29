@@ -9,8 +9,8 @@ fn main() {
 
     // Touch these settings.
     let mut desired_effects: Vec<u8> = vec![1, 2, 12, 19];
-    let desired_ingredients_vec: Vec<u8> = vec![1, 2, 3, 4, 5, 6];
-    let mut desired_path_count = 1;
+    let desired_ingredients_vec: Vec<u8> = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+    let mut desired_path_count = 5;
 
     let first_node = MixNode {
         effs: vec![23], // This is the initial effect for your ingredient. For example, for Og Kush, put 23 for the Calming initial effect.
