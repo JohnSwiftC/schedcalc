@@ -27,7 +27,7 @@ fn main() {
 
     // Encodings
 
-    let mut effect_map = HashMap::from([
+    let mut effect_map: HashMap<u8, &str> = HashMap::from([
         (1, "Energizing"),
         (2, "Sedating"),
         (3, "Toxic"),
@@ -65,7 +65,7 @@ fn main() {
         (35, "Explosive"),
     ]);
 
-    let mut mixer_map = HashMap::from([
+    let mut mixer_map: HashMap<u8, &str> = HashMap::from([
         (1, "Cuke"),
         (2, "Flu Medicine"),
         (3, "Gasoline"),
@@ -144,10 +144,7 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                println!(
-                    "Match found! Path: {:?}, Effects: {:?}",
-                    new_node.path, new_node.effs
-                );
+                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map);
             }
 
             stack.push_back(new_node);
@@ -190,10 +187,7 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                println!(
-                    "Match found! Path: {:?}, Effects: {:?}",
-                    new_node.path, new_node.effs
-                );
+                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map);
             }
 
             stack.push_back(new_node);
@@ -247,10 +241,7 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                println!(
-                    "Match found! Path: {:?}, Effects: {:?}",
-                    new_node.path, new_node.effs
-                );
+                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map);
             }
 
             stack.push_back(new_node);
@@ -295,10 +286,7 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                println!(
-                    "Match found! Path: {:?}, Effects: {:?}",
-                    new_node.path, new_node.effs
-                );
+                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map);
             }
 
             stack.push_back(new_node);
@@ -340,10 +328,7 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                println!(
-                    "Match found! Path: {:?}, Effects: {:?}",
-                    new_node.path, new_node.effs
-                );
+                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map);
             }
 
             stack.push_back(new_node);
@@ -380,10 +365,7 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                println!(
-                    "Match found! Path: {:?}, Effects: {:?}",
-                    new_node.path, new_node.effs
-                );
+                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map);
             }
 
             stack.push_back(new_node);
@@ -436,10 +418,7 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                println!(
-                    "Match found! Path: {:?}, Effects: {:?}",
-                    new_node.path, new_node.effs
-                );
+                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map);
             }
 
             stack.push_back(new_node);
@@ -490,10 +469,7 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                println!(
-                    "Match found! Path: {:?}, Effects: {:?}",
-                    new_node.path, new_node.effs
-                );
+                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map);
             }
 
             stack.push_back(new_node);
@@ -532,10 +508,7 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                println!(
-                    "Match found! Path: {:?}, Effects: {:?}",
-                    new_node.path, new_node.effs
-                );
+                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map);
             }
 
             stack.push_back(new_node);
@@ -574,10 +547,7 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                println!(
-                    "Match found! Path: {:?}, Effects: {:?}",
-                    new_node.path, new_node.effs
-                );
+                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map);
             }
 
             stack.push_back(new_node);
@@ -621,10 +591,7 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                println!(
-                    "Match found! Path: {:?}, Effects: {:?}",
-                    new_node.path, new_node.effs
-                );
+                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map);
             }
 
             stack.push_back(new_node);
@@ -661,10 +628,7 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                println!(
-                    "Match found! Path: {:?}, Effects: {:?}",
-                    new_node.path, new_node.effs
-                );
+                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map);
             }
 
             stack.push_back(new_node);
@@ -700,10 +664,7 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                println!(
-                    "Match found! Path: {:?}, Effects: {:?}",
-                    new_node.path, new_node.effs
-                );
+                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map);
             }
 
             stack.push_back(new_node);
@@ -753,10 +714,7 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                println!(
-                    "Match found! Path: {:?}, Effects: {:?}",
-                    new_node.path, new_node.effs
-                );
+                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map);
             }
 
             stack.push_back(new_node);
@@ -794,10 +752,7 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                println!(
-                    "Match found! Path: {:?}, Effects: {:?}",
-                    new_node.path, new_node.effs
-                );
+                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map);
             }
 
             stack.push_back(new_node);
@@ -850,10 +805,7 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                println!(
-                    "Match found! Path: {:?}, Effects: {:?}",
-                    new_node.path, new_node.effs
-                );
+                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map);
             }
 
             stack.push_back(new_node);
@@ -875,4 +827,26 @@ where
     }
     vec.push(val);
     vec.sort();
+}
+
+fn display_path(path: &Vec<u8>, effs: &Vec<u8>, mixer_map: &HashMap<u8, &str>, effect_map: &HashMap<u8, &str>) {
+    let mut path_string = String::new();
+    for (i, p) in path.iter().enumerate() {
+        if i == path.len() - 1 {
+            path_string.push_str(mixer_map.get(p).unwrap());
+        } else {
+            path_string.push_str(&format!("{} -> ", mixer_map.get(p).unwrap()));
+        }
+    }
+
+    let mut effect_string = String::new();
+    for (i, e) in effs.iter().enumerate() {
+        if i == effs.len() - 1 {
+            effect_string.push_str(effect_map.get(e).unwrap());
+        } else {
+            effect_string.push_str(&format!("{} + ", effect_map.get(e).unwrap()));
+        }
+    }
+
+    println!("Path: {} Effects: {}", path_string, effect_string);
 }
