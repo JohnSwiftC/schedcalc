@@ -6,8 +6,16 @@ struct MixNode {
 }
 
 fn main() {
-    let mut desired_effects: Vec<u8> = vec![35, 32, 34, 16];
+    let mut desired_effects: Vec<u8> = vec![1, 2, 12, 19];
+    let desired_ingredients_vec: Vec<u8> = vec![1, 2, 3, 4, 5, 6];
     desired_effects.sort();
+
+    let mut desired_ingredients: HashSet<u8> = HashSet::new();
+
+    for ing in desired_ingredients_vec {
+        desired_ingredients.insert(ing);
+    }
+
 
     let mut previous_nodes = HashSet::new(); // HashSet is sorted effects of a node.
     let mut stack = VecDeque::new();
@@ -94,7 +102,7 @@ fn main() {
             contains_munchies = true;
         }
 
-        if !node.path.ends_with(&[1]) || true {
+        if desired_ingredients.contains(&1) {
             // Cuke
             let mut cuke_mix = Vec::new();
             for eff in &node.effs {
@@ -145,7 +153,7 @@ fn main() {
             stack.push_back(new_node);
         }
 
-        if !node.path.ends_with(&[2]) || true {
+        if desired_ingredients.contains(&2) {
             // Flu
             let mut flu_mix = Vec::new();
             for eff in &node.effs {
@@ -191,7 +199,7 @@ fn main() {
             stack.push_back(new_node);
         }
 
-        if !node.path.ends_with(&[3]) || true {
+        if desired_ingredients.contains(&3) {
             // Gasoline // RULE CHANGE! If energizing and euphoric are present, it will turn energizing into spicy and leave euphoric
             let mut gas_mix = Vec::new();
             for eff in &node.effs {
@@ -248,7 +256,7 @@ fn main() {
             stack.push_back(new_node);
         }
 
-        if !node.path.ends_with(&[4]) || true {
+        if desired_ingredients.contains(&4) {
             // Donut
             let mut donut_mix = Vec::new();
             let has_calorie_dense = node.effs.contains(&4);
@@ -296,7 +304,7 @@ fn main() {
             stack.push_back(new_node);
         }
 
-        if !node.path.ends_with(&[5]) || true {
+        if desired_ingredients.contains(&5) {
             // Energy Drink
             let mut energy_drink_mix = Vec::new();
 
@@ -341,7 +349,7 @@ fn main() {
             stack.push_back(new_node);
         }
 
-        if !node.path.ends_with(&[6]) || true {
+        if desired_ingredients.contains(&6) {
             // Mouth Wash
             let mut mouth_wash_mix = Vec::new();
 
@@ -381,7 +389,7 @@ fn main() {
             stack.push_back(new_node);
         }
 
-        if !node.path.ends_with(&[7]) || true {
+        if desired_ingredients.contains(&7) {
             // Motor Oil
             let mut motor_oil_mix = Vec::new();
             let mut has_munchies = false;
@@ -437,7 +445,7 @@ fn main() {
             stack.push_back(new_node);
         }
 
-        if !node.path.ends_with(&[8]) || true {
+        if desired_ingredients.contains(&8) {
             // Banana
             let mut banana_mix = Vec::new();
             let mut has_cyclopean = false;
@@ -491,7 +499,7 @@ fn main() {
             stack.push_back(new_node);
         }
 
-        if !node.path.ends_with(&[9]) || true {
+        if desired_ingredients.contains(&9) {
             // Chili
             let mut chili_mix = Vec::new();
 
@@ -533,7 +541,7 @@ fn main() {
             stack.push_back(new_node);
         }
 
-        if !node.path.ends_with(&[10]) || true {
+        if desired_ingredients.contains(&10) {
             // Iodine
             let mut iodine_mix = Vec::new();
 
@@ -575,7 +583,7 @@ fn main() {
             stack.push_back(new_node);
         }
 
-        if !node.path.ends_with(&[11]) || true {
+        if desired_ingredients.contains(&11) {
             // Paracetemol
             let mut paracetamol_mix = Vec::new();
             let has_munchies = node.effs.contains(&18); // Check for Munchies presence
@@ -622,7 +630,7 @@ fn main() {
             stack.push_back(new_node);
         }
 
-        if !node.path.ends_with(&[12]) || true {
+        if desired_ingredients.contains(&12) {
             // Viagra
             let mut viagra_mix = Vec::new();
 
@@ -662,7 +670,7 @@ fn main() {
             stack.push_back(new_node);
         }
 
-        if !node.path.ends_with(&[13]) || true {
+        if desired_ingredients.contains(&13) {
             // Horse Semen
             let mut horse_semen_mix = Vec::new();
 
@@ -701,7 +709,7 @@ fn main() {
             stack.push_back(new_node);
         }
 
-        if !node.path.ends_with(&[14]) || true {
+        if desired_ingredients.contains(&14) {
             // Mega Bean
             let mut mega_bean_mix = Vec::new();
             let has_thought_provoking = node.effs.contains(&15);
@@ -754,7 +762,7 @@ fn main() {
             stack.push_back(new_node);
         }
 
-        if !node.path.ends_with(&[15]) || true {
+        if desired_ingredients.contains(&15) {
             // Addy
             let mut addy_mix = Vec::new();
 
@@ -795,7 +803,7 @@ fn main() {
             stack.push_back(new_node);
         }
 
-        if !node.path.ends_with(&[16]) || true {
+        if desired_ingredients.contains(&16) {
             // Battery
             let mut battery_mix = Vec::new();
             let mut has_electrifying = false;
