@@ -6,8 +6,18 @@ struct MixNode {
 }
 
 fn main() {
+
+    // Touch these settings.
     let mut desired_effects: Vec<u8> = vec![1, 2, 12, 19];
     let desired_ingredients_vec: Vec<u8> = vec![1, 2, 3, 4, 5, 6];
+    let mut desired_path_count = 1;
+
+    let first_node = MixNode {
+        effs: vec![23], // This is the initial effect for your ingredient. For example, for Og Kush, put 23 for the Calming initial effect.
+        path: Vec::new(),
+    };
+
+    // Nothing below this for usage.
     desired_effects.sort();
 
     let mut desired_ingredients: HashSet<u8> = HashSet::new();
@@ -20,14 +30,9 @@ fn main() {
     let mut previous_nodes = HashSet::new(); // HashSet is sorted effects of a node.
     let mut stack = VecDeque::new();
 
-    let first_node = MixNode {
-        effs: vec![23],
-        path: Vec::new(),
-    };
-
     // Encodings
 
-    let mut effect_map: HashMap<u8, &str> = HashMap::from([
+    let effect_map: HashMap<u8, &str> = HashMap::from([
         (1, "Energizing"),
         (2, "Sedating"),
         (3, "Toxic"),
@@ -65,7 +70,7 @@ fn main() {
         (35, "Explosive"),
     ]);
 
-    let mut mixer_map: HashMap<u8, &str> = HashMap::from([
+    let mixer_map: HashMap<u8, &str> = HashMap::from([
         (1, "Cuke"),
         (2, "Flu Medicine"),
         (3, "Gasoline"),
@@ -144,7 +149,7 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map);
+                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map, &mut desired_path_count);
             }
 
             stack.push_back(new_node);
@@ -187,7 +192,7 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map);
+                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map, &mut desired_path_count);
             }
 
             stack.push_back(new_node);
@@ -241,7 +246,7 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map);
+                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map, &mut desired_path_count);
             }
 
             stack.push_back(new_node);
@@ -286,7 +291,7 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map);
+                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map, &mut desired_path_count);
             }
 
             stack.push_back(new_node);
@@ -328,7 +333,7 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map);
+                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map, &mut desired_path_count);
             }
 
             stack.push_back(new_node);
@@ -365,7 +370,7 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map);
+                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map, &mut desired_path_count);
             }
 
             stack.push_back(new_node);
@@ -418,7 +423,7 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map);
+                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map, &mut desired_path_count);
             }
 
             stack.push_back(new_node);
@@ -469,7 +474,7 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map);
+                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map, &mut desired_path_count);
             }
 
             stack.push_back(new_node);
@@ -508,7 +513,7 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map);
+                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map, &mut desired_path_count);
             }
 
             stack.push_back(new_node);
@@ -547,7 +552,7 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map);
+                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map, &mut desired_path_count);
             }
 
             stack.push_back(new_node);
@@ -591,7 +596,7 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map);
+                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map, &mut desired_path_count);
             }
 
             stack.push_back(new_node);
@@ -628,7 +633,7 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map);
+                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map, &mut desired_path_count);
             }
 
             stack.push_back(new_node);
@@ -664,7 +669,7 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map);
+                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map, &mut desired_path_count);
             }
 
             stack.push_back(new_node);
@@ -714,7 +719,7 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map);
+                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map, &mut desired_path_count);
             }
 
             stack.push_back(new_node);
@@ -752,7 +757,7 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map);
+                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map, &mut desired_path_count);
             }
 
             stack.push_back(new_node);
@@ -805,7 +810,7 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map);
+                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map, &mut desired_path_count);
             }
 
             stack.push_back(new_node);
@@ -829,7 +834,7 @@ where
     vec.sort();
 }
 
-fn display_path(path: &Vec<u8>, effs: &Vec<u8>, mixer_map: &HashMap<u8, &str>, effect_map: &HashMap<u8, &str>) {
+fn display_path(path: &Vec<u8>, effs: &Vec<u8>, mixer_map: &HashMap<u8, &str>, effect_map: &HashMap<u8, &str>, desired_path_count: &mut i32) {
     let mut path_string = String::new();
     for (i, p) in path.iter().enumerate() {
         if i == path.len() - 1 {
@@ -848,5 +853,10 @@ fn display_path(path: &Vec<u8>, effs: &Vec<u8>, mixer_map: &HashMap<u8, &str>, e
         }
     }
 
-    println!("Path: {} Effects: {}", path_string, effect_string);
+    println!("Path: {} | Effects: {}", path_string, effect_string);
+
+    *desired_path_count -= 1;
+    if *desired_path_count == 0 {
+        panic!("Desired amount of paths printed, exiting.");
+    }
 }
