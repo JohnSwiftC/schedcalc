@@ -24,7 +24,7 @@ with the current implementation. Also, a pre-generated graph in memory would mak
 
 # Build, Usage
 
-There are currently no CLI args. Go into `main.rs` and change the desired_ingredients_vec and the desired_effects_vec to their appropriate mappings (found a little further down).
+There are currently no CLI args. Go into `main.rs` and change the desired effects, desired ingredients, and initial effect for your base.
 
 Build with `cargo build --release` or ideally right now just hit `cargo run`.
 
