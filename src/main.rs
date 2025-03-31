@@ -491,10 +491,10 @@ fn main() {
                 match eff {
                     5 => inr(&mut chili_mix, 17),  // Athletic -> Euphoric
                     31 => inr(&mut chili_mix, 12), // Anti-Gravity -> Tropic Thunder
-                    11 => inr(&mut chili_mix, 9),  // Sneaky -> Bright-Eyed
+                    11 => inr(&mut chili_mix, 16),  // Sneaky -> Bright-Eyed
                     18 => inr(&mut chili_mix, 3),  // Munchies -> Toxic
                     22 => inr(&mut chili_mix, 13), // Laxative -> Long Faced
-                    27 => inr(&mut chili_mix, 25), // Shrinking -> Refreshing
+                    27 => inr(&mut chili_mix, 26), // Shrinking -> Refreshing
                     n => inr(&mut chili_mix, *n),  // Keep other effects unchanged
                 };
             }
@@ -582,7 +582,7 @@ fn main() {
                     1 => inr(&mut paracetamol_mix, 19),  // Energizing -> Paranoia
                     23 => inr(&mut paracetamol_mix, 7),  // Calming -> Slippery
                     3 => inr(&mut paracetamol_mix, 12),  // Toxic -> Tropic Thunder
-                    9 => inr(&mut paracetamol_mix, 26),  // Spicy -> Bright-Eyed
+                    9 => inr(&mut paracetamol_mix, 16),  // Spicy -> Bright-Eyed
                     28 => inr(&mut paracetamol_mix, 3),  // Glowing -> Toxic
                     14 => inr(&mut paracetamol_mix, 23), // Foggy -> Calming
                     18 => inr(&mut paracetamol_mix, 31), // Munchies -> Anti-Gravity
