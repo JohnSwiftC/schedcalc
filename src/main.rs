@@ -6,10 +6,10 @@ struct MixNode {
 }
 
 fn main() {
-
     // Touch these settings.
     let mut desired_effects: Vec<u8> = vec![1, 2, 12, 19];
-    let desired_ingredients_vec: Vec<u8> = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+    let desired_ingredients_vec: Vec<u8> =
+        vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
     let mut desired_path_count = 5;
 
     let first_node = MixNode {
@@ -25,7 +25,6 @@ fn main() {
     for ing in desired_ingredients_vec {
         desired_ingredients.insert(ing);
     }
-
 
     let mut previous_nodes = HashSet::new(); // HashSet is sorted effects of a node.
     let mut stack = VecDeque::new();
@@ -113,8 +112,8 @@ fn main() {
             let mut cuke_mix = Vec::new();
             for eff in &node.effs {
                 match eff {
-                    3 => inr(&mut cuke_mix, 17), // Toxic → Euphoric
-                    7 => inr(&mut cuke_mix, 18), // Slippery → Munchies
+                    3 => inr(&mut cuke_mix, 17),  // Toxic → Euphoric
+                    7 => inr(&mut cuke_mix, 18),  // Slippery → Munchies
                     11 => inr(&mut cuke_mix, 19), // Sneaky → Paranoia
                     14 => inr(&mut cuke_mix, 21), // Foggy → Cyclopean
                     8 => inr(&mut cuke_mix, 15),  // Gingeritis → Thought-Provoking
@@ -143,7 +142,13 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map, &mut desired_path_count);
+                display_path(
+                    &new_node.path,
+                    &new_node.effs,
+                    &mixer_map,
+                    &effect_map,
+                    &mut desired_path_count,
+                );
             }
 
             stack.push_back(new_node);
@@ -186,7 +191,13 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map, &mut desired_path_count);
+                display_path(
+                    &new_node.path,
+                    &new_node.effs,
+                    &mixer_map,
+                    &effect_map,
+                    &mut desired_path_count,
+                );
             }
 
             stack.push_back(new_node);
@@ -208,7 +219,7 @@ fn main() {
                     19 => inr(&mut gas_mix, 23),
                     25 => inr(&mut gas_mix, 29),
                     27 => inr(&mut gas_mix, 24),
-                    n => inr(&mut gas_mix, *n),  // Keep other effects unchanged
+                    n => inr(&mut gas_mix, *n), // Keep other effects unchanged
                 };
             }
 
@@ -230,7 +241,13 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map, &mut desired_path_count);
+                display_path(
+                    &new_node.path,
+                    &new_node.effs,
+                    &mixer_map,
+                    &effect_map,
+                    &mut desired_path_count,
+                );
             }
 
             stack.push_back(new_node);
@@ -243,12 +260,12 @@ fn main() {
             for eff in &node.effs {
                 match eff {
                     4 => inr(&mut donut_mix, 35),  // Calorie-Dense -> Explosive
-                    6 => inr(&mut donut_mix, 11),  // Balding -> Sneaky // NUMBER WAS WRONG GO FUCK YOURSELF
-                    31 => inr(&mut donut_mix, 7),  // Anti-Gravity -> Slippery
-                    10 => inr(&mut donut_mix, 8),  // Jennerising -> Gingeritis
+                    6 => inr(&mut donut_mix, 11), // Balding -> Sneaky // NUMBER WAS WRONG GO FUCK YOURSELF
+                    31 => inr(&mut donut_mix, 7), // Anti-Gravity -> Slippery
+                    10 => inr(&mut donut_mix, 8), // Jennerising -> Gingeritis
                     24 => inr(&mut donut_mix, 17), // Focused -> Euphoric
-                    27 => inr(&mut donut_mix, 1),  // Shrinking -> Energizing
-                    n => inr(&mut donut_mix, *n),  // Keep other effects unchanged
+                    27 => inr(&mut donut_mix, 1), // Shrinking -> Energizing
+                    n => inr(&mut donut_mix, *n), // Keep other effects unchanged
                 };
             }
 
@@ -269,7 +286,13 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map, &mut desired_path_count);
+                display_path(
+                    &new_node.path,
+                    &new_node.effs,
+                    &mixer_map,
+                    &effect_map,
+                    &mut desired_path_count,
+                );
             }
 
             stack.push_back(new_node);
@@ -311,7 +334,13 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map, &mut desired_path_count);
+                display_path(
+                    &new_node.path,
+                    &new_node.effs,
+                    &mixer_map,
+                    &effect_map,
+                    &mut desired_path_count,
+                );
             }
 
             stack.push_back(new_node);
@@ -348,7 +377,13 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map, &mut desired_path_count);
+                display_path(
+                    &new_node.path,
+                    &new_node.effs,
+                    &mixer_map,
+                    &effect_map,
+                    &mut desired_path_count,
+                );
             }
 
             stack.push_back(new_node);
@@ -369,12 +404,12 @@ fn main() {
             // Apply transformations
             for eff in &node.effs {
                 match eff {
-                    1 => inr(&mut motor_oil_mix, 18), // Energizing -> Munchies
+                    1 => inr(&mut motor_oil_mix, 18),  // Energizing -> Munchies
                     18 => inr(&mut motor_oil_mix, 33), // Munchies -> Schizo
-                    14 => inr(&mut motor_oil_mix, 3), // Foggy -> Toxic
-                    17 => inr(&mut motor_oil_mix, 2), // Euphoric -> Sedating
+                    14 => inr(&mut motor_oil_mix, 3),  // Foggy -> Toxic
+                    17 => inr(&mut motor_oil_mix, 2),  // Euphoric -> Sedating
                     19 => inr(&mut motor_oil_mix, 31), // Paranoia -> Anti-Gravity
-                    n => inr(&mut motor_oil_mix, *n), // Keep other effects unchanged
+                    n => inr(&mut motor_oil_mix, *n),  // Keep other effects unchanged
                 };
             }
 
@@ -395,7 +430,13 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map, &mut desired_path_count);
+                display_path(
+                    &new_node.path,
+                    &new_node.effs,
+                    &mixer_map,
+                    &effect_map,
+                    &mut desired_path_count,
+                );
             }
 
             stack.push_back(new_node);
@@ -404,22 +445,14 @@ fn main() {
         if desired_ingredients.contains(&8) {
             // Banana
             let mut banana_mix = Vec::new();
-            let mut has_cyclopean = false;
-
-            // First pass to check for Cyclopean
-            for eff in &node.effs {
-                if *eff == 21 {
-                    has_cyclopean = true;
-                }
-            }
 
             // Apply transformations
             for eff in &node.effs {
                 match eff {
-                    1 if !has_cyclopean => inr(&mut banana_mix, 15), // Energizing -> Thought-Provoking (if no Cyclopean)
-                    23 => inr(&mut banana_mix, 11),                  // Calming -> Sneaky
-                    3 => inr(&mut banana_mix, 30),                   // Toxic -> Smelly
-                    34 => inr(&mut banana_mix, 25),                  // Long Faced -> Refreshing
+                    1 => inr(&mut banana_mix, 15),  // energizing -> thought provoking
+                    23 => inr(&mut banana_mix, 11), // Calming -> Sneaky
+                    3 => inr(&mut banana_mix, 30),  // Toxic -> Smelly
+                    34 => inr(&mut banana_mix, 25), // Long Faced -> Refreshing
                     21 => inr(&mut banana_mix, 15), // Cyclopean -> Thought-Provoking
                     29 => inr(&mut banana_mix, 24), // Disorienting -> Focused
                     24 => inr(&mut banana_mix, 32), // Focused -> Seizure-Inducing
@@ -446,7 +479,13 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map, &mut desired_path_count);
+                display_path(
+                    &new_node.path,
+                    &new_node.effs,
+                    &mixer_map,
+                    &effect_map,
+                    &mut desired_path_count,
+                );
             }
 
             stack.push_back(new_node);
@@ -485,7 +524,13 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map, &mut desired_path_count);
+                display_path(
+                    &new_node.path,
+                    &new_node.effs,
+                    &mixer_map,
+                    &effect_map,
+                    &mut desired_path_count,
+                );
             }
 
             stack.push_back(new_node);
@@ -524,7 +569,13 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map, &mut desired_path_count);
+                display_path(
+                    &new_node.path,
+                    &new_node.effs,
+                    &mixer_map,
+                    &effect_map,
+                    &mut desired_path_count,
+                );
             }
 
             stack.push_back(new_node);
@@ -533,20 +584,19 @@ fn main() {
         if desired_ingredients.contains(&11) {
             // Paracetemol
             let mut paracetamol_mix = Vec::new();
-            let has_munchies = node.effs.contains(&18); // Check for Munchies presence
-            let has_paranoia = node.effs.contains(&19); // Check for Paranoia presence
 
             for eff in &node.effs {
                 match eff {
-                    1 if !has_munchies => inr(&mut paracetamol_mix, 19), // Energizing -> Paranoia (if no Munchies)
-                    23 => inr(&mut paracetamol_mix, 7),                  // Calming -> Slippery
-                    3 => inr(&mut paracetamol_mix, 12),                  // Toxic -> Tropic Thunder
-                    9 => inr(&mut paracetamol_mix, 26),                  // Spicy -> Bright-Eyed
-                    28 => inr(&mut paracetamol_mix, 3),                  // Glowing -> Toxic
-                    14 => inr(&mut paracetamol_mix, 23),                 // Foggy -> Calming
-                    18 => inr(&mut paracetamol_mix, 31),                 // Munchies -> Anti-Gravity
-                    1 if has_paranoia => inr(&mut paracetamol_mix, 6), // Energizing -> Balding (if Paranoia present)
-                    25 => inr(&mut paracetamol_mix, 5),                // Electrifying -> Athletic
+                    1 => inr(&mut paracetamol_mix, 19),  // Energizing -> Paranoia
+                    23 => inr(&mut paracetamol_mix, 7),  // Calming -> Slippery
+                    3 => inr(&mut paracetamol_mix, 12),  // Toxic -> Tropic Thunder
+                    9 => inr(&mut paracetamol_mix, 26),  // Spicy -> Bright-Eyed
+                    28 => inr(&mut paracetamol_mix, 3),  // Glowing -> Toxic
+                    14 => inr(&mut paracetamol_mix, 23), // Foggy -> Calming
+                    18 => inr(&mut paracetamol_mix, 31), // Munchies -> Anti-Gravity
+                    19 => inr(&mut paracetamol_mix, 6),  // Paranoia -> Balding
+                    25 => inr(&mut paracetamol_mix, 5),  // Electrifying -> Athletic
+                    24 => inr(&mut paracetamol_mix, 8),
                     n => inr(&mut paracetamol_mix, *n), // Keep other effects unchanged
                 };
             }
@@ -568,7 +618,13 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map, &mut desired_path_count);
+                display_path(
+                    &new_node.path,
+                    &new_node.effs,
+                    &mixer_map,
+                    &effect_map,
+                    &mut desired_path_count,
+                );
             }
 
             stack.push_back(new_node);
@@ -605,7 +661,13 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map, &mut desired_path_count);
+                display_path(
+                    &new_node.path,
+                    &new_node.effs,
+                    &mixer_map,
+                    &effect_map,
+                    &mut desired_path_count,
+                );
             }
 
             stack.push_back(new_node);
@@ -641,7 +703,13 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map, &mut desired_path_count);
+                display_path(
+                    &new_node.path,
+                    &new_node.effs,
+                    &mixer_map,
+                    &effect_map,
+                    &mut desired_path_count,
+                );
             }
 
             stack.push_back(new_node);
@@ -691,7 +759,13 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map, &mut desired_path_count);
+                display_path(
+                    &new_node.path,
+                    &new_node.effs,
+                    &mixer_map,
+                    &effect_map,
+                    &mut desired_path_count,
+                );
             }
 
             stack.push_back(new_node);
@@ -729,7 +803,13 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map, &mut desired_path_count);
+                display_path(
+                    &new_node.path,
+                    &new_node.effs,
+                    &mixer_map,
+                    &effect_map,
+                    &mut desired_path_count,
+                );
             }
 
             stack.push_back(new_node);
@@ -782,7 +862,13 @@ fn main() {
                 .iter()
                 .all(|&eff| new_node.effs.contains(&eff))
             {
-                display_path(&new_node.path, &new_node.effs, &mixer_map, &effect_map, &mut desired_path_count);
+                display_path(
+                    &new_node.path,
+                    &new_node.effs,
+                    &mixer_map,
+                    &effect_map,
+                    &mut desired_path_count,
+                );
             }
 
             stack.push_back(new_node);
@@ -806,7 +892,13 @@ where
     vec.sort();
 }
 
-fn display_path(path: &Vec<u8>, effs: &Vec<u8>, mixer_map: &HashMap<u8, &str>, effect_map: &HashMap<u8, &str>, desired_path_count: &mut i32) {
+fn display_path(
+    path: &Vec<u8>,
+    effs: &Vec<u8>,
+    mixer_map: &HashMap<u8, &str>,
+    effect_map: &HashMap<u8, &str>,
+    desired_path_count: &mut i32,
+) {
     let mut path_string = String::new();
     for (i, p) in path.iter().enumerate() {
         if i == path.len() - 1 {
