@@ -769,7 +769,7 @@ fn main() {
             for eff in &node.effs {
                 match eff {
                     2 => inr(&mut addy_mix, 8),   // Sedating -> Gingeritis
-                    32 => inr(&mut addy_mix, 25), // Long Faced -> Electrifying
+                    13 => inr(&mut addy_mix, 25), // Long Faced -> Electrifying
                     28 => inr(&mut addy_mix, 26), // Glowing -> Refreshing
                     14 => inr(&mut addy_mix, 1),  // Foggy -> Energizing
                     35 => inr(&mut addy_mix, 17), // Explosive -> Euphoric
