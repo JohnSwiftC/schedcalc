@@ -7,7 +7,7 @@ struct MixNode {
 
 fn main() {
     // Touch these settings.
-    let mut desired_effects: Vec<u8> = vec![1, 2, 12, 19];
+    let mut desired_effects: Vec<u8> = vec![32,33,34,25,1];
     let desired_ingredients_vec: Vec<u8> =
         vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
     let mut desired_path_count = 5;
@@ -444,7 +444,7 @@ fn main() {
                     1 => inr(&mut banana_mix, 15),  // energizing -> thought provoking
                     23 => inr(&mut banana_mix, 11), // Calming -> Sneaky
                     3 => inr(&mut banana_mix, 30),  // Toxic -> Smelly
-                    34 => inr(&mut banana_mix, 25), // Long Faced -> Refreshing
+                    13 => inr(&mut banana_mix, 26), // Long Faced -> Refreshing
                     21 => inr(&mut banana_mix, 15), // Cyclopean -> Thought-Provoking
                     29 => inr(&mut banana_mix, 24), // Disorienting -> Focused
                     24 => inr(&mut banana_mix, 32), // Focused -> Seizure-Inducing
@@ -493,7 +493,7 @@ fn main() {
                     31 => inr(&mut chili_mix, 12), // Anti-Gravity -> Tropic Thunder
                     11 => inr(&mut chili_mix, 9),  // Sneaky -> Bright-Eyed
                     18 => inr(&mut chili_mix, 3),  // Munchies -> Toxic
-                    22 => inr(&mut chili_mix, 34), // Laxative -> Long Faced
+                    22 => inr(&mut chili_mix, 13), // Laxative -> Long Faced
                     27 => inr(&mut chili_mix, 25), // Shrinking -> Refreshing
                     n => inr(&mut chili_mix, *n),  // Keep other effects unchanged
                 };
@@ -726,7 +726,7 @@ fn main() {
                         inr(&mut mega_bean_mix, 1);
                         inr(&mut mega_bean_mix, 21);
                     }
-                    34 => inr(&mut mega_bean_mix, 24), // Seizure-Inducing -> Focused
+                    32 => inr(&mut mega_bean_mix, 24), // Seizure-Inducing -> Focused
                     24 => inr(&mut mega_bean_mix, 29), // Focused -> Disorienting
                     27 => inr(&mut mega_bean_mix, 25), // Shrinking -> Electrifying
                     n => inr(&mut mega_bean_mix, *n),  // Keep other effects unchanged
