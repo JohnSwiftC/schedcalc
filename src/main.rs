@@ -32,6 +32,7 @@ fn main() {
 
     // Encodings
 
+    // Big oopsies here, foggy is included twice. I am going to keep this like that for now.
     let effect_map: HashMap<u8, &str> = HashMap::from([
         (1, "Energizing"),
         (2, "Sedating"),
@@ -52,7 +53,7 @@ fn main() {
         (17, "Euphoric"),
         (18, "Munchies"),
         (19, "Paranoia"),
-        (20, "Foggy"),
+        //(14, "Foggy"),
         (21, "Cyclopean"),
         (22, "Laxative"),
         (23, "Calming"),
@@ -122,7 +123,7 @@ fn main() {
                         }
                     }
                     11 => inr(&mut cuke_mix, 19), // Sneaky → Paranoia
-                    20 => inr(&mut cuke_mix, 21), // Foggy → Cyclopean
+                    14 => inr(&mut cuke_mix, 21), // Foggy → Cyclopean
                     8 => inr(&mut cuke_mix, 15),  // Gingeritis → Thought-Provoking
                     18 => inr(&mut cuke_mix, 5),  // Munchies → Athletic
                     17 => inr(&mut cuke_mix, 22), // Euphoric → Laxative
@@ -163,7 +164,7 @@ fn main() {
                     23 => inr(&mut flu_mix, 16),
                     5 => inr(&mut flu_mix, 18),
                     15 => inr(&mut flu_mix, 8),
-                    21 => inr(&mut flu_mix, 20),
+                    21 => inr(&mut flu_mix, 14),
                     18 => inr(&mut flu_mix, 7),
                     22 => inr(&mut flu_mix, 17),
                     17 => inr(&mut flu_mix, 3),
@@ -219,7 +220,7 @@ fn main() {
                             inr(&mut gas_mix, 9); // Euphoric → Spicy (Only if Energizing not present)
                         }
                     }
-                    22 => inr(&mut gas_mix, 20), // Laxative → Foggy
+                    22 => inr(&mut gas_mix, 14), // Laxative → Foggy
                     29 => inr(&mut gas_mix, 28), // Disorienting → Glowing
                     19 => inr(&mut gas_mix, 23), // Paranoia → Calming
                     25 => inr(&mut gas_mix, 29), // Electrifying → Disorienting
@@ -308,7 +309,7 @@ fn main() {
                     9 => inr(&mut energy_drink_mix, 17),  // Spicy -> Euphoric
                     12 => inr(&mut energy_drink_mix, 11), // Tropic Thunder -> Sneaky
                     28 => inr(&mut energy_drink_mix, 29), // Glowing -> Disorienting
-                    20 => inr(&mut energy_drink_mix, 22), // Foggy -> Laxative
+                    14 => inr(&mut energy_drink_mix, 22), // Foggy -> Laxative
                     29 => inr(&mut energy_drink_mix, 25), // Disorienting -> Electrifying
                     33 => inr(&mut energy_drink_mix, 6),  // Schizophrenia -> Balding
                     24 => inr(&mut energy_drink_mix, 27), // Focused -> Shrinking
@@ -399,7 +400,7 @@ fn main() {
                             inr(&mut motor_oil_mix, 18); // Energizing -> Munchies
                         }
                     }
-                    20 => inr(&mut motor_oil_mix, 3), // Foggy -> Toxic
+                    14 => inr(&mut motor_oil_mix, 3), // Foggy -> Toxic
                     17 => inr(&mut motor_oil_mix, 2), // Euphoric -> Sedating
                     19 => inr(&mut motor_oil_mix, 31), // Paranoia -> Anti-Gravity
                     n => inr(&mut motor_oil_mix, *n), // Keep other effects unchanged
@@ -527,7 +528,7 @@ fn main() {
                 match eff {
                     23 => inr(&mut iodine_mix, 6),  // Calming -> Balding
                     3 => inr(&mut iodine_mix, 11),  // Toxic -> Sneaky
-                    20 => inr(&mut iodine_mix, 19), // Foggy -> Paranoia
+                    14 => inr(&mut iodine_mix, 19), // Foggy -> Paranoia
                     4 => inr(&mut iodine_mix, 8),   // Calorie-Dense -> Gingeritis
                     17 => inr(&mut iodine_mix, 32), // Euphoric -> Seizure-Inducing
                     25 => inr(&mut iodine_mix, 15), // Refreshing -> Thought-Provoking
@@ -571,7 +572,7 @@ fn main() {
                     3 => inr(&mut paracetamol_mix, 12),                  // Toxic -> Tropic Thunder
                     9 => inr(&mut paracetamol_mix, 26),                  // Spicy -> Bright-Eyed
                     28 => inr(&mut paracetamol_mix, 3),                  // Glowing -> Toxic
-                    20 => inr(&mut paracetamol_mix, 23),                 // Foggy -> Calming
+                    14 => inr(&mut paracetamol_mix, 23),                 // Foggy -> Calming
                     18 => inr(&mut paracetamol_mix, 31),                 // Munchies -> Anti-Gravity
                     1 if has_paranoia => inr(&mut paracetamol_mix, 6), // Energizing -> Balding (if Paranoia present)
                     25 => inr(&mut paracetamol_mix, 5),                // Electrifying -> Athletic
@@ -734,7 +735,7 @@ fn main() {
                     2 => inr(&mut addy_mix, 8),   // Sedating -> Gingeritis
                     32 => inr(&mut addy_mix, 25), // Long Faced -> Electrifying
                     28 => inr(&mut addy_mix, 26), // Glowing -> Refreshing
-                    20 => inr(&mut addy_mix, 1),  // Foggy -> Energizing
+                    14 => inr(&mut addy_mix, 1),  // Foggy -> Energizing
                     35 => inr(&mut addy_mix, 17), // Explosive -> Euphoric
                     n => inr(&mut addy_mix, *n),  // Keep other effects unchanged
                 };
