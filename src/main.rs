@@ -392,14 +392,6 @@ fn main() {
         if desired_ingredients.contains(&7) {
             // Motor Oil
             let mut motor_oil_mix = Vec::new();
-            let mut has_munchies = false;
-
-            // First pass to check for Energizing
-            for eff in &node.effs {
-                if *eff == 18 {
-                    has_munchies = true;
-                }
-            }
 
             // Apply transformations
             for eff in &node.effs {
@@ -827,7 +819,6 @@ fn main() {
                     17  => inr(&mut battery_mix, 34), // Euphoric -> Zombifying
                     25  => inr(&mut battery_mix, 17), // Electrifying -> Euphoric
                     22 => inr(&mut battery_mix, 4),                     // Laxative -> Calorie-Dense
-                    25 => inr(&mut battery_mix, 17),                    // Electrifying -> Euphoric
                     21 => inr(&mut battery_mix, 28),                    // Cyclopean -> Glowing
                     27 => inr(&mut battery_mix, 18),                    // Shrinking -> Munchies
                     n => inr(&mut battery_mix, *n), // Keep other effects unchanged
