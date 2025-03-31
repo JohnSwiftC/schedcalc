@@ -369,14 +369,8 @@ fn main() {
             // Apply transformations
             for eff in &node.effs {
                 match eff {
-                    1 => {
-                        inr(&mut motor_oil_mix, 18); // Energizing -> Munchies
-                        if has_munchies {
-                            inr(&mut motor_oil_mix, 33); // Energizing -> Schizophrenia
-                        } else {
-                            inr(&mut motor_oil_mix, 18); // Energizing -> Munchies
-                        }
-                    }
+                    1 => inr(&mut motor_oil_mix, 18), // Energizing -> Munchies
+                    18 => inr(&mut motor_oil_mix, 33), // Munchies -> Schizo
                     14 => inr(&mut motor_oil_mix, 3), // Foggy -> Toxic
                     17 => inr(&mut motor_oil_mix, 2), // Euphoric -> Sedating
                     19 => inr(&mut motor_oil_mix, 31), // Paranoia -> Anti-Gravity
