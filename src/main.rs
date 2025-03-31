@@ -48,12 +48,12 @@ fn main() {
         (12, "Tropic Thunder"),
         (13, "Long Faced"),
         (14, "Foggy"),
-        (15, "Though-Provoking"),
+        (15, "Thought-Provoking"),
         (16, "Bright Eyed"),
         (17, "Euphoric"),
         (18, "Munchies"),
         (19, "Paranoia"),
-        //(14, "Foggy"),
+        //(20, "Foggy"), Duplicate, changed some rules and broke some things.
         (21, "Cyclopean"),
         (22, "Laxative"),
         (23, "Calming"),
@@ -114,14 +114,7 @@ fn main() {
             for eff in &node.effs {
                 match eff {
                     3 => inr(&mut cuke_mix, 17), // Toxic → Euphoric
-                    7 => {
-                        if contains_munchies {
-                            inr(&mut cuke_mix, 5); // Slippery + Munchies = Athletic
-                            munchies_mixed = true;
-                        } else {
-                            inr(&mut cuke_mix, 18); // Slippery → Munchies
-                        }
-                    }
+                    7 => inr(&mut cuke_mix, 18), // Slippery → Munchies
                     11 => inr(&mut cuke_mix, 19), // Sneaky → Paranoia
                     14 => inr(&mut cuke_mix, 21), // Foggy → Cyclopean
                     8 => inr(&mut cuke_mix, 15),  // Gingeritis → Thought-Provoking
@@ -204,27 +197,17 @@ fn main() {
             let mut gas_mix = Vec::new();
             for eff in &node.effs {
                 match eff {
-                    1 => {
-                        if !node.effs.contains(&17) {
-                            inr(&mut gas_mix, 17); // Energizing → Euphoric
-                        } else {
-                            inr(&mut gas_mix, 9); // Energizing → Spicy
-                        }
-                    }
-                    8 => inr(&mut gas_mix, 30),  // Gingeritis → Smelly
-                    10 => inr(&mut gas_mix, 11), // Jennerising → Sneaky
-                    11 => inr(&mut gas_mix, 12), // Sneaky → Tropic Thunder
-                    18 => inr(&mut gas_mix, 2),  // Munchies → Sedating
-                    17 => {
-                        if !node.effs.contains(&1) {
-                            inr(&mut gas_mix, 9); // Euphoric → Spicy (Only if Energizing not present)
-                        }
-                    }
-                    22 => inr(&mut gas_mix, 14), // Laxative → Foggy
-                    29 => inr(&mut gas_mix, 28), // Disorienting → Glowing
-                    19 => inr(&mut gas_mix, 23), // Paranoia → Calming
-                    25 => inr(&mut gas_mix, 29), // Electrifying → Disorienting
-                    27 => inr(&mut gas_mix, 24), // Shrinking → Focused
+                    9 => inr(&mut gas_mix, 30),
+                    10 => inr(&mut gas_mix, 11),
+                    11 => inr(&mut gas_mix, 12),
+                    18 => inr(&mut gas_mix, 2),
+                    1 => inr(&mut gas_mix, 9),
+                    17 => inr(&mut gas_mix, 1),
+                    22 => inr(&mut gas_mix, 14),
+                    29 => inr(&mut gas_mix, 28),
+                    19 => inr(&mut gas_mix, 23),
+                    25 => inr(&mut gas_mix, 29),
+                    27 => inr(&mut gas_mix, 24),
                     n => inr(&mut gas_mix, *n),  // Keep other effects unchanged
                 };
             }
@@ -256,11 +239,10 @@ fn main() {
         if desired_ingredients.contains(&4) {
             // Donut
             let mut donut_mix = Vec::new();
-            let has_calorie_dense = node.effs.contains(&4);
-            let has_explosive = node.effs.contains(&35);
 
             for eff in &node.effs {
                 match eff {
+                    4 => inr(&mut donut_mix, 35),  // Calorie-Dense -> Explosive
                     6 => inr(&mut donut_mix, 11),  // Balding -> Sneaky // NUMBER WAS WRONG GO FUCK YOURSELF
                     31 => inr(&mut donut_mix, 7),  // Anti-Gravity -> Slippery
                     10 => inr(&mut donut_mix, 8),  // Jennerising -> Gingeritis
@@ -268,11 +250,6 @@ fn main() {
                     27 => inr(&mut donut_mix, 1),  // Shrinking -> Energizing
                     n => inr(&mut donut_mix, *n),  // Keep other effects unchanged
                 };
-            }
-
-            // Add Explosive (35) if Calorie-Dense (4) is present and Explosive is not
-            if has_calorie_dense && !has_explosive {
-                inr(&mut donut_mix, 35);
             }
 
             inr(&mut donut_mix, 4); // Add the main effect (Donut)
