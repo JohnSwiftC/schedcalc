@@ -718,11 +718,10 @@ fn main() {
         if desired_ingredients.contains(&14) {
             // Mega Bean
             let mut mega_bean_mix = Vec::new();
-            let has_thought_provoking = node.effs.contains(&15);
 
             for eff in &node.effs {
                 match eff {
-                    1 if !has_thought_provoking => inr(&mut mega_bean_mix, 21), // Energizing -> Cyclopean (unless Thought-Provoking is present)
+                    1 => inr(&mut mega_bean_mix, 21), // Energizing -> Cyclopean
                     23 => inr(&mut mega_bean_mix, 28), // Calming -> Glowing
                     11 => {
                         inr(&mut mega_bean_mix, 23);
@@ -818,25 +817,15 @@ fn main() {
         if desired_ingredients.contains(&16) {
             // Battery
             let mut battery_mix = Vec::new();
-            let mut has_electrifying = false;
-            let mut has_zombifying = false;
 
-            // First, scan for Electrifying and Zombifying presence
-            for eff in &node.effs {
-                if *eff == 25 {
-                    has_electrifying = true;
-                }
-                if *eff == 34 {
-                    has_zombifying = true;
-                }
-            }
+            
 
             // Process effects
             for eff in &node.effs {
                 match eff {
                     18 => inr(&mut battery_mix, 12), // Munchies -> Tropic Thunder
-                    17 if !has_electrifying => inr(&mut battery_mix, 34), // Euphoric -> Zombifying (if Electrifying not present)
-                    25 if !has_zombifying => inr(&mut battery_mix, 17), // Electrifying -> Euphoric (if Zombifying not present)
+                    17  => inr(&mut battery_mix, 34), // Euphoric -> Zombifying
+                    25  => inr(&mut battery_mix, 17), // Electrifying -> Euphoric
                     22 => inr(&mut battery_mix, 4),                     // Laxative -> Calorie-Dense
                     25 => inr(&mut battery_mix, 17),                    // Electrifying -> Euphoric
                     21 => inr(&mut battery_mix, 28),                    // Cyclopean -> Glowing
