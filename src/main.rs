@@ -208,7 +208,7 @@ fn main() {
             let mut gas_mix = Vec::new();
             for eff in &node.effs {
                 match eff {
-                    9 => inr(&mut gas_mix, 30),
+                    8 => inr(&mut gas_mix, 30),
                     10 => inr(&mut gas_mix, 11),
                     11 => inr(&mut gas_mix, 12),
                     18 => inr(&mut gas_mix, 2),
