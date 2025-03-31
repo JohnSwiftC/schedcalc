@@ -672,8 +672,8 @@ fn main() {
             for eff in &node.effs {
                 match eff {
                     31 => inr(&mut horse_semen_mix, 23), // Anti-Gravity -> Calming
-                    8 => inr(&mut horse_semen_mix, 25),  // Gingeritis -> Refreshing
-                    15 => inr(&mut horse_semen_mix, 27), // Thought-Provoking -> Electrifying
+                    8 => inr(&mut horse_semen_mix, 26),  // Gingeritis -> Refreshing
+                    15 => inr(&mut horse_semen_mix, 25), // Thought-Provoking -> Electrifying
                     n => inr(&mut horse_semen_mix, *n),  // Keep other effects unchanged
                 };
             }
