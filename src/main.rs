@@ -124,7 +124,7 @@ fn main() {
                 };
             }
 
-            inr(&mut cuke_mix, 1); // Add the main effect (Cuke)
+            if cuke_mix.len() < 8 {inr(&mut cuke_mix, 1);} // Add the main effect (Cuke)
 
             // Sort effects
             cuke_mix.sort();
@@ -173,7 +173,7 @@ fn main() {
                 };
             }
 
-            inr(&mut flu_mix, 2); // Add the main effect (Flu)
+            if flu_mix.len() < 8 {inr(&mut flu_mix, 2)} // Add the main effect (Flu)
 
             // Sort effects
             flu_mix.sort();
@@ -226,7 +226,7 @@ fn main() {
             inr(&mut gas_mix, 3); // Add the main effect (Gasoline)
 
             // Sort effects
-            gas_mix.sort();
+            if gas_mix.len() < 8 {gas_mix.sort();}
 
             let new_node = MixNode {
                 effs: gas_mix,
@@ -269,7 +269,7 @@ fn main() {
                 };
             }
 
-            inr(&mut donut_mix, 4); // Add the main effect (Donut)
+            if donut_mix.len() < 8 {inr(&mut donut_mix, 4)} // Add the main effect (Donut)
 
             // Sort effects
             donut_mix.sort();
@@ -317,7 +317,7 @@ fn main() {
                 };
             }
 
-            inr(&mut energy_drink_mix, 5); // Add the main effect (Energy Drink)
+            if energy_drink_mix.len() < 8 {inr(&mut energy_drink_mix, 5)} // Add the main effect (Energy Drink)
 
             // Sort effects
             energy_drink_mix.sort();
@@ -360,7 +360,7 @@ fn main() {
                 };
             }
 
-            inr(&mut mouth_wash_mix, 6); // Add the main effect (Mouth Wash)
+            if mouth_wash_mix.len() < 8 {inr(&mut mouth_wash_mix, 6);} // Add the main effect (Mouth Wash)
 
             // Sort effects
             mouth_wash_mix.sort();
@@ -405,7 +405,7 @@ fn main() {
                 };
             }
 
-            inr(&mut motor_oil_mix, 7); // Add the main effect (Motor Oil)
+            if motor_oil_mix.len() < 8 {inr(&mut motor_oil_mix, 7);} // Add the main effect (Motor Oil)
 
             // Sort effects
             motor_oil_mix.sort();
@@ -454,7 +454,7 @@ fn main() {
                 };
             }
 
-            inr(&mut banana_mix, 8); // Add the main effect (Banana)
+            if banana_mix.len() < 8 {inr(&mut banana_mix, 8);} // Add the main effect (Banana)
 
             // Sort effects
             banana_mix.sort();
@@ -499,7 +499,7 @@ fn main() {
                 };
             }
 
-            inr(&mut chili_mix, 9); // Add the main effect (Chili)
+            if chili_mix.len() < 8 {inr(&mut chili_mix, 9);} // Add the main effect (Chili)
 
             // Sort effects
             chili_mix.sort();
@@ -539,12 +539,12 @@ fn main() {
                     14 => inr(&mut iodine_mix, 19), // Foggy -> Paranoia
                     4 => inr(&mut iodine_mix, 8),   // Calorie-Dense -> Gingeritis
                     17 => inr(&mut iodine_mix, 32), // Euphoric -> Seizure-Inducing
-                    25 => inr(&mut iodine_mix, 15), // Refreshing -> Thought-Provoking
+                    26 => inr(&mut iodine_mix, 15), // Refreshing -> Thought-Provoking
                     n => inr(&mut iodine_mix, *n),  // Keep other effects unchanged
                 };
             }
 
-            inr(&mut iodine_mix, 10); // Add the main effect (Iodine)
+            if iodine_mix.len() < 8 {inr(&mut iodine_mix, 10);} // Add the main effect (Iodine)
 
             // Sort effects
             iodine_mix.sort();
@@ -593,7 +593,7 @@ fn main() {
                 };
             }
 
-            inr(&mut paracetamol_mix, 11); // Add the main effect (Paracetemol)
+            if paracetamol_mix.len() < 8 {inr(&mut paracetamol_mix, 11);} // Add the main effect (Paracetemol)
 
             // Sort effects
             paracetamol_mix.sort();
@@ -629,14 +629,14 @@ fn main() {
             for eff in &node.effs {
                 match eff {
                     5 => inr(&mut viagra_mix, 11),  // Athletic -> Sneaky
-                    17 => inr(&mut viagra_mix, 26), // Euphoric -> Bright-Eyed
+                    17 => inr(&mut viagra_mix, 16), // Euphoric -> Bright-Eyed
                     22 => inr(&mut viagra_mix, 23), // Laxative -> Calming
                     29 => inr(&mut viagra_mix, 3),  // Disorienting -> Toxic
                     n => inr(&mut viagra_mix, *n),  // Keep other effects unchanged
                 };
             }
 
-            inr(&mut viagra_mix, 12); // Add the main effect (Viagra)
+            if viagra_mix.len() < 8 {inr(&mut viagra_mix, 12);} // Add the main effect (Viagra)
 
             // Sort effects
             viagra_mix.sort();
@@ -678,7 +678,7 @@ fn main() {
                 };
             }
 
-            inr(&mut horse_semen_mix, 13); // Add the main effect (Horse Semen)
+            if horse_semen_mix.iter().len() < 8 {inr(&mut horse_semen_mix, 13);} // Add the main effect (Horse Semen)
 
             // Sort effects
             horse_semen_mix.sort();
@@ -715,17 +715,11 @@ fn main() {
                 match eff {
                     1 => inr(&mut mega_bean_mix, 21), // Energizing -> Cyclopean
                     23 => inr(&mut mega_bean_mix, 28), // Calming -> Glowing
-                    11 => {
-                        inr(&mut mega_bean_mix, 23);
-                        inr(&mut mega_bean_mix, 28);
-                    }
+                    11 => inr(&mut mega_bean_mix, 23),
                     10 => inr(&mut mega_bean_mix, 19), // Jennerising -> Paranoia
                     5 => inr(&mut mega_bean_mix, 22),  // Athletic -> Laxative
-                    7 => inr(&mut mega_bean_mix, 2),   // Slippery -> Toxic
-                    15 => {
-                        inr(&mut mega_bean_mix, 1);
-                        inr(&mut mega_bean_mix, 21);
-                    }
+                    7 => inr(&mut mega_bean_mix, 3),   // Slippery -> Toxic
+                    15 => inr(&mut mega_bean_mix, 1),
                     32 => inr(&mut mega_bean_mix, 24), // Seizure-Inducing -> Focused
                     24 => inr(&mut mega_bean_mix, 29), // Focused -> Disorienting
                     27 => inr(&mut mega_bean_mix, 25), // Shrinking -> Electrifying
@@ -733,7 +727,7 @@ fn main() {
                 };
             }
 
-            inr(&mut mega_bean_mix, 14); // Add the main effect (Mega Bean)
+            if mega_bean_mix.len() < 8 {inr(&mut mega_bean_mix, 14);} // Add the main effect (Mega Bean)
 
             // Sort effects
             mega_bean_mix.sort();
@@ -777,7 +771,7 @@ fn main() {
                 };
             }
 
-            inr(&mut addy_mix, 15); // Add the main effect (Addy)
+            if addy_mix.len() < 8 {inr(&mut addy_mix, 15);} // Add the main effect (Addy)
 
             // Sort effects
             addy_mix.sort();
@@ -825,7 +819,7 @@ fn main() {
                 };
             }
 
-            inr(&mut battery_mix, 16); // Add the main effect (Battery)
+            if battery_mix.len() < 8 {inr(&mut battery_mix, 16);} // Add the main effect (Battery)
 
             // Sort effects
             battery_mix.sort();
