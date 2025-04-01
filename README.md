@@ -5,7 +5,6 @@ A reverse mixing algorithm for the game Schedule 1. This game has a grip on me a
 Of course, the website does exist, HOWEVER parts of the algorithm are behind a paywall! Not sure why we would do this, doesn't seem very fun to me.
 Adding features should be easy, here are some I plan to add soon.
 
-- Easy UI / CLI Args
 - Price tracking
 - Website if I'm feeling snazzy
 - Optimizations (Built in Rust so it's already pretty speedy, but I do a disgusting amount of cloning, escape-hatching, and vec comparisons)
@@ -24,9 +23,10 @@ with the current implementation. Also, a pre-generated graph in memory would mak
 
 # Build, Usage
 
-There are currently no CLI args. Go into `main.rs` and change the desired effects, desired ingredients, and initial effect for your base.
-
+This is now ran as an interactable app in the command line.
 Build with `cargo build --release` or ideally right now just hit `cargo run`.
+
+Follow instructions and commands after!
 
 # Rule Problems
 
