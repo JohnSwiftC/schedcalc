@@ -8,11 +8,14 @@ Adding features should be easy, here are some I plan to add soon.
 - Website if I'm feeling snazzy
 - Optimizations (Built in Rust so it's already pretty speedy, but I do a disgusting amount of cloning, escape-hatching, and vec comparisons)
 
-Currently, the BFS does the following things:
+# Features
 
-- Finds shortest paths of *desired ingredients* to a set of effects.
-- Shows all potential paths.
-- Shows the ingredient cost and final sell multiplier of every path you find.
+Features are quick to produce, so expect more if I think of them!
+
+- Easy to use console interface, just run and follow the instructions!
+- Discovers shortest paths to desired effects with desired ingredients.
+- Displays the cost and sell price multiplier of every mix discovered.
+- Search for highest sell multiplier for desired ingredients.
 
 # Technical Details
 

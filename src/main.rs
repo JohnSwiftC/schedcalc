@@ -2,13 +2,15 @@ use std::io::stdin;
 use std::collections::{HashMap, HashSet};
 
 pub mod effect_to_path;
+pub mod best_with_ingredients;
 
 fn main() {
 
     println!("Welcome to the CLI Version of the Schedule 1 Mixing Calculator.");
     loop {
         println!("Select a command\n\
-        1. Find paths with desired effects and ingredients");
+        1. Find paths with desired effects and ingredients\n\
+        2. Find highest sell multiplier with ingredients");
 
         let mut command = String::new();
         stdin().read_line(&mut command).expect("stdin failed");
@@ -17,10 +19,9 @@ fn main() {
                 println!("Invalid integer!");
                 continue;
             },
-            Ok(1) => {
-                handle_effect_to_path();
-            },
-            Ok(n) => {
+            Ok(1) => handle_effect_to_path(),
+            Ok(2) => handle_best_ingredients(),
+            Ok(_) => {
                 println!("Not a command!");
                 continue;
             }
@@ -133,7 +134,7 @@ fn handle_effect_to_path() {
                 desired_ingredients.insert(m.parse().unwrap());
             });
         }
-        Ok(n) => {
+        Ok(_) => {
             println!("Invalid.");
             return;
         },
@@ -160,4 +161,76 @@ fn handle_effect_to_path() {
 
     println!("Search being ran, this may take a minute...");
     effect_to_path::run(desired_effects, desired_ingredients, starting_effect, path_count);
+}
+
+fn handle_best_ingredients() {
+
+    let mixer_map: HashMap<u8, &str> = HashMap::from([
+        (1, "Cuke"),
+        (2, "Flu Medicine"),
+        (3, "Gasoline"),
+        (4, "Donut"),
+        (5, "Energy Drink"),
+        (6, "Mouth Wash"),
+        (7, "Motor Oil"),
+        (8, "Banana"),
+        (9, "Chili"),
+        (10, "Iodine"),
+        (11, "Paracetemol"),
+        (12, "Viagra"),
+        (13, "Horse Semen"),
+        (14, "Mega Bean"),
+        (15, "Addy"),
+        (16, "Battery"),
+    ]);
+
+    println!("1. Use all possible ingredients\n2. Select a specific set");
+
+    let mut desired_ingredients: HashSet<u8> = HashSet::new();
+    let mut ingredient_string = String::new();
+    stdin().read_line(&mut ingredient_string).unwrap();
+    match ingredient_string.trim().parse() {
+        Ok(1) => {
+            for i in 1..=16 {
+                desired_ingredients.insert(i);
+            }
+        },
+        Ok(2) => {
+            println!("Ingredients:");
+            let mut i: u8 = 1;
+            while let Some(v) = mixer_map.get(&i) {
+                println!("{} - {}", i, v);
+                i += 1;
+            }
+            let mut mixer_string = String::new();
+            println!("Please enter a list of the desired ingredients, seperated by spaces: ");
+            stdin().read_line(&mut mixer_string).unwrap();
+            mixer_string.split_whitespace().for_each(|m| {
+                desired_ingredients.insert(m.parse().unwrap());
+            });
+        }
+        Ok(_) => {
+            println!("Invalid.");
+            return;
+        },
+        Err(_) => {
+            println!("Invalid.");
+            return;
+        }
+    }
+
+    println!("Enter your starting effect (for example Og Kush starts as calming). If your drug does not start with an effect, ie meth, just hit enter: ");
+    let mut starting_effect_string = String::new();
+    let starting_effect: Option<u8>;
+    stdin().read_line(&mut starting_effect_string).unwrap();
+    if starting_effect_string.trim().len() == 0 {
+        starting_effect = None;
+    } else {
+        starting_effect = Some(starting_effect_string.trim().parse().unwrap());
+    }
+
+
+    println!("Search being ran, this may take a minute...");
+    let mut max = 1.0;
+    best_with_ingredients::run(desired_ingredients, starting_effect, &mut max);
 }
