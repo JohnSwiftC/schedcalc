@@ -904,6 +904,67 @@ fn display_path(
     effect_map: &HashMap<u8, &str>,
     desired_path_count: &mut i32,
 ) {
+
+    let cost_map: HashMap<u8, i32> = HashMap::from([
+        (1, 2),
+        (2, 5),
+        (3, 5),
+        (4, 3),
+        (5, 6),
+        (6, 4),
+        (7, 6),
+        (8, 2),
+        (9, 7),
+        (10, 8),
+        (11, 3),
+        (12, 4),
+        (13, 9),
+        (14, 7),
+        (15, 9),
+        (16, 8),
+    ]);
+
+    let multiplier_map: HashMap<u8, f32> = HashMap::from([
+        (1, 1.22),
+        (2, 1.26),
+        (3, 1.0),
+        (4, 1.28),
+        (5, 1.32),
+        (6, 1.30),
+        (7, 1.34),
+        (8, 1.2),
+        (9, 1.38),
+        (10, 1.42),
+        (11, 1.24),
+        (12, 1.46),
+        (13, 1.52),
+        (14, 1.36),
+        (15, 1.44),
+        (16, 1.40),
+        (17, 1.18),
+        (18, 1.12),
+        (19, 1.0),
+        //(20, "Foggy"), Duplicate, changed some rules and broke some things.
+        (21, 1.56),
+        (22, 1.0),
+        (23, 1.1),
+        (24, 1.16),
+        (25, 1.50),
+        (26, 1.14),
+        (27, 1.6),
+        (28, 1.48),
+        (29, 1.0),
+        (30, 1.0),
+        (31, 1.54),
+        (32, 1.0),
+        (33, 1.0),
+        (34, 1.58),
+        (35, 1.0),
+    ]);
+
+    let mut cost = 0;
+    let mut multi: f32 = 1.0;
+
     let mut path_string = String::new();
     for (i, p) in path.iter().enumerate() {
         if i == path.len() - 1 {
@@ -911,6 +972,8 @@ fn display_path(
         } else {
             path_string.push_str(&format!("{} -> ", mixer_map.get(p).unwrap()));
         }
+
+        cost += cost_map.get(p).unwrap();
     }
 
     let mut effect_string = String::new();
@@ -920,9 +983,11 @@ fn display_path(
         } else {
             effect_string.push_str(&format!("{} + ", effect_map.get(e).unwrap()));
         }
+
+        multi *= multiplier_map.get(e).unwrap();
     }
 
-    println!("Path: {} | Effects: {}", path_string, effect_string);
+    println!("Path: {} | Effects: {} | Cost: {} | Sell Multiplier: {}", path_string, effect_string, cost, multi);
 
     *desired_path_count -= 1;
     

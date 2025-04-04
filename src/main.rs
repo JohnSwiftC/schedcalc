@@ -51,7 +51,7 @@ fn handle_effect_to_path() {
         (17, "Euphoric"),
         (18, "Munchies"),
         (19, "Paranoia"),
-        //(20, "Foggy"), Duplicate, changed some rules and broke some things.
+        (20, "NONE, DO NOT PICK"), //Duplicate, changed some rules and broke some things.
         (21, "Cyclopean"),
         (22, "Laxative"),
         (23, "Calming"),
@@ -88,15 +88,14 @@ fn handle_effect_to_path() {
         (16, "Battery"),
     ]);
 
+
     println!("Effects:");
-    for (k, v) in effect_map {
-        println!("{}. {}", k, v);
+    let mut i: u8 = 1;
+    while let Some(v) = effect_map.get(&i) {
+        println!("{} - {}", i, v);
+        i += 1;
     }
     println!("PS: I am aware there is a number missing! Ignore it!\n");
-    println!("Mixers:");
-    for (k, v) in mixer_map {
-        println!("{}. {}", k, v);
-    }
 
     let mut effect_string = String::new();
     println!("Please enter a list of the desired effect IDs, seperated by spaces: ");
@@ -121,6 +120,12 @@ fn handle_effect_to_path() {
             }
         },
         Ok(2) => {
+            println!("Ingredients:");
+            let mut i: u8 = 1;
+            while let Some(v) = mixer_map.get(&i) {
+                println!("{} - {}", i, v);
+                i += 1;
+            }
             let mut mixer_string = String::new();
             println!("Please enter a list of the desired ingredients, seperated by spaces: ");
             stdin().read_line(&mut mixer_string).unwrap();
