@@ -422,15 +422,3 @@ fn display_path(path: &Vec<u8>, effects: &EffectSet, mix_data: &MixData) {
         path_string, effect_string, cost, multi + 1.0
     );
 }
-
-// Main function for testing
-fn main() {
-    // Example usage:
-    let desired_ingredients: HashSet<u8> = [1, 2, 4, 5, 8, 9, 11, 14, 15, 16].iter().cloned().collect();
-    let starting_effect = Some(23); // Calming
-    let mut max_multiplier = 0.0;
-    
-    run(desired_ingredients, starting_effect, &mut max_multiplier);
-    
-    println!("Maximum multiplier found: {}", max_multiplier);
-}
