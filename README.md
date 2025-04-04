@@ -5,7 +5,6 @@ A reverse mixing algorithm for the game Schedule 1. This game has a grip on me a
 Of course, the website does exist, HOWEVER parts of the algorithm are behind a paywall! Not sure why we would do this, doesn't seem very fun to me.
 Adding features should be easy, here are some I plan to add soon.
 
-- Price tracking
 - Website if I'm feeling snazzy
 - Optimizations (Built in Rust so it's already pretty speedy, but I do a disgusting amount of cloning, escape-hatching, and vec comparisons)
 
@@ -13,6 +12,7 @@ Currently, the BFS does the following things:
 
 - Finds shortest paths of *desired ingredients* to a set of effects.
 - Shows all potential paths.
+- Shows the ingredient cost and final sell multiplier of every path you find.
 
 # Technical Details
 
