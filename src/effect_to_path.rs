@@ -925,45 +925,45 @@ fn display_path(
     ]);
 
     let multiplier_map: HashMap<u8, f32> = HashMap::from([
-        (1, 1.22),
-        (2, 1.26),
-        (3, 1.0),
-        (4, 1.28),
-        (5, 1.32),
-        (6, 1.30),
-        (7, 1.34),
-        (8, 1.2),
-        (9, 1.38),
-        (10, 1.42),
-        (11, 1.24),
-        (12, 1.46),
-        (13, 1.52),
-        (14, 1.36),
-        (15, 1.44),
-        (16, 1.40),
-        (17, 1.18),
-        (18, 1.12),
-        (19, 1.0),
+        (1, 0.22),
+        (2, 0.26),
+        (3, 0.0),
+        (4, 0.28),
+        (5, 0.32),
+        (6, 0.30),
+        (7, 0.34),
+        (8, 0.2),
+        (9, 0.38),
+        (10, 0.42),
+        (11, 0.24),
+        (12, 0.46),
+        (13, 0.52),
+        (14, 0.36),
+        (15, 0.44),
+        (16, 0.40),
+        (17, 0.18),
+        (18, 0.12),
+        (19, 0.0),
         //(20, "Foggy"), Duplicate, changed some rules and broke some things.
-        (21, 1.56),
-        (22, 1.0),
-        (23, 1.1),
-        (24, 1.16),
-        (25, 1.50),
-        (26, 1.14),
-        (27, 1.6),
-        (28, 1.48),
-        (29, 1.0),
-        (30, 1.0),
-        (31, 1.54),
-        (32, 1.0),
-        (33, 1.0),
-        (34, 1.58),
-        (35, 1.0),
+        (21, 0.56),
+        (22, 0.0),
+        (23, 0.1),
+        (24, 0.16),
+        (25, 0.50),
+        (26, 0.14),
+        (27, 0.6),
+        (28, 0.48),
+        (29, 0.0),
+        (30, 0.0),
+        (31, 0.54),
+        (32, 0.0),
+        (33, 0.0),
+        (34, 0.58),
+        (35, 0.0),
     ]);
 
     let mut cost = 0;
-    let mut multi: f32 = 1.0;
+    let mut multi: f32 = 0.0;
 
     let mut path_string = String::new();
     for (i, p) in path.iter().enumerate() {
@@ -984,10 +984,10 @@ fn display_path(
             effect_string.push_str(&format!("{} + ", effect_map.get(e).unwrap()));
         }
 
-        multi *= multiplier_map.get(e).unwrap();
+        multi += multiplier_map.get(e).unwrap();
     }
 
-    println!("Path: {} | Effects: {} | Cost: {} | Sell Multiplier: {}", path_string, effect_string, cost, multi);
+    println!("Path: {} | Effects: {} | Cost: {} | Sell Multiplier: {}", path_string, effect_string, cost, multi + 1.0);
 
     *desired_path_count -= 1;
     
