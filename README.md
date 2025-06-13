@@ -19,7 +19,7 @@ Features are quick to produce, so expect more if I think of them!
 
 # Technical Details
 
-Implemented a BFS algorithm to find paths. Adding features should be strait-forward for anyone who has their own ideas. Please, make a pull request or fork if you do! I love free, good tools.
+Implemented a BFS algorithm to find paths. Adding features should be straight-forward for anyone who has their own ideas. Please, make a pull request or fork if you do! I love free, good tools.
 
 It might be optimal to generate an actual graph one time, and then apply graph algorithms to it. I currently BFS on generation of nodes, so some tricks like meet in the middle are not possible
 with the current implementation. Also, a pre-generated graph in memory would make this *incredibly fast* for repeat queries.
